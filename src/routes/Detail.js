@@ -85,8 +85,15 @@ const Detail = ({ shoes }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(result.id);
+    let getWatchedItem = localStorage.getItem("watched");
+    getWatchedItem = JSON.parse(getWatchedItem);
+    getWatchedItem.push(result.id);
+    getWatchedItem = new Set(getWatchedItem);
+    getWatchedItem = Array.from(getWatchedItem);
+    localStorage.setItem("watched", JSON.stringify(getWatchedItem));
+    //console.log(getWatchedItem);
   }, []);
+
 
   return (
     <div className={`container containerStart ${comfade}`}>

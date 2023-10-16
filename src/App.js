@@ -6,12 +6,13 @@ import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import Detail from "./routes/Detail";
 import Main from "./routes/Main";
 import Cart from "./routes/Cart";
+import Watched from "./routes/Watched";
 
 function App() {
   const obj = { name: "kim" };
   localStorage.setItem("data", JSON.stringify(obj));
   const 꺼낸거 = localStorage.getItem("data");
-  console.log(JSON.parse(꺼낸거).name);
+  //console.log(JSON.parse(꺼낸거).name);
 
   let [shoes, setShoes] = useState(data);
 
@@ -19,6 +20,8 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("watched", JSON.stringify([]));
+    // const watchedItem = localStorage.getItem("watched");
+    // console.log(JSON.parse(watchedItem));
   }, []);
 
   return (
@@ -75,6 +78,8 @@ function App() {
           <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
       </Routes>
+
+      <Watched/>
     </div>
   );
 }
